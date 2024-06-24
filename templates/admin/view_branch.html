@@ -1,0 +1,40 @@
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="" method="get">
+<table class="table table-active">
+  <tr style="color: #414f52" bgcolor="#f0ffff">
+    <th width="168" scope="col">S/No</th>
+    <th width="168" scope="col">Branch Name</th>
+    <th width="168" scope="col">IFSC</th>
+    <th width="168" scope="col">Pin</th>
+    <th width="168" scope="col">Phone</th>
+    <th width="168" scope="col">Email</th>
+    <th width="131" scope="col">
+    <th width="131" scope="col">
+   </th>
+  </tr>
+    {% for i in data %}
+  <tr style="color: #414f52">
+  <td>{{ forloop.counter }}</td>
+  <td>{{ i.branch_name }}</td>
+  <td>{{ i.ifsc }}</td>
+  <td>{{ i.pincode }}</td>
+        <td>{{ i.phone }}</td>
+      <td>{{ i.email }}</td>
+  <td><p><a href="/edit_branch/{{ i.id }}#products" class="btn btn-outline-light" >Edit</a></p>
+    <p><a href="/delete_branch/{{ i.LOGIN_id }}" class="btn btn-outline-light" onclick="return confirm('Are you sure?')">Delete</a></p></td>
+  <td><a href="/view_customers/{{ i.id }}#products" class="btn btn-outline-light" >Customers</a> </td>
+    </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+</html>
+{% endblock %}

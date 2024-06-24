@@ -1,0 +1,99 @@
+{% extends 'branch/branch_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="/add_customer_post" onsubmit="return validate()" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  <table class="table table-active">
+    <tr>
+      <th scope="row" style="color: #414f52">Name</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" required class="form-control"/></td>
+    </tr>
+    <tr>
+      <th scope="row" style="color: #414f52">Email</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <th scope="row" style="color: #414f52">Image</th>
+      <td><label for="textfield3"></label>
+        <label for="fileField"></label>
+      <input type="file" name="fileField" id="fileField"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <th scope="row" style="color: #414f52">Phone</th>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <th scope="row" style="color: #414f52">Gender</th>
+      <td><p>
+          <input type="radio" name="radio" id="radio" value="Male" />
+        Male</p>
+        <p>
+          <input type="radio" name="radio" id="radio2" value="Female" />
+          <label for="radio2"></label>
+        Female</p>
+        <p>
+          <input type="radio" name="radio" id="radio3" value="Other" />
+          <label for="radio3"></label>
+        Others</p>
+        <p>
+  <label for="radio"></label>
+      </p></td>
+    </tr>
+    <tr>
+      <th scope="row" style="color: #414f52"><p>Account</p>
+      <p>No</p></th>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2" scope="row"><input type="submit" name="button" class="btn btn-ensurance" id="button" value="Add" /></td>
+    </tr>
+  </table>
+</form>
+<script>
+    function validate() {
+        var regex = /^[a-zA-Z]*$/;
+        var regex3 =  /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+        var regex1 = /^[0-9]*$/;
+        var regex2 =  /(.+)@(.+){2,}\.(.+){2,}/;
+
+        var cname = document.getElementById("textfield").value;
+        var cemail = document.getElementById("textfield2").value;
+        var cphone = document.getElementById("textfield4").value;
+        var caccount = document.getElementById("textfield5").value;
+
+
+        if (!regex.test(cname)) {
+            alert("Name should only contain alphabets");
+            return false;
+        }
+        else if (!regex2.test(cemail)) {
+            alert("Invalid Email");
+            return false;
+        }
+        else if (!regex3.test(cphone)) {
+            alert("Phone number should only contain 10 digits");
+            return false;
+        }
+        else if (!regex1.test(caccount)) {
+            alert("Account number should only contain digits");
+            return false;
+        }
+        else {
+
+            return true;
+        }
+    }
+</script>
+</body>
+</html>
+{% endblock %}

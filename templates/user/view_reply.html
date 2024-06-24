@@ -1,0 +1,32 @@
+{% extends 'user/user_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="" method="get"></form>
+<a href="/send_complaint#products" class="btn btn-success"><i class="fa fa-plus"></i> New Complaint</a>
+  <table class="table table-active">
+    <tr style="color: #414f52" bgcolor="#f0ffff">
+    <th scope="col">S\No</th>
+    <th scope="col"><p>Complaint Date</p></th>
+    <th scope="col">Complaints</th>
+    <th scope="col">Reply</th>
+    <th scope="col">Reply Date</th>
+  </tr>
+    {% for i in data %}
+        <tr style="color: #414f52">
+    <td>{{ forloop.counter }}</td>
+    <td>{{ i.date }}</td>
+    <td>{{ i.complaint }}&nbsp;</td>
+    <td>{{ i.reply }}&nbsp;</td>
+    <td>{{ i.reply_date }}&nbsp;</td>
+  </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'user/user_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="" method="post">
+  <table class="table table-active">
+    <tr>
+      <th scope="row">Image</th>
+      <td><label for="textfield"></label><img src="{{ data.image }}" height="100" width="100"/>
+     </td>
+    </tr>
+    <tr>
+      <th scope="row">Name</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data.name }}" readonly/></td>
+    </tr>
+    <tr>
+      <th scope="row">Gender</th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3" value="{{ data.gender }}" readonly /></td>
+    </tr>
+    <tr>
+      <th scope="row">Account no</th>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4" value="{{ data.account_no }}" readonly /></td>
+    </tr>
+    <tr>
+      <th scope="row">Branch</th>
+      <td><label for="textfield5"></label>
+      <input type="text" name="textfield5" id="textfield5" value="{{ data.BRANCH.branch_name }} - {{ data.BRANCH.phone }}" readonly /></td>
+    </tr>
+    <tr>
+      <th scope="row">Phone</th>
+      <td><label for="textfield6"></label>
+      <input type="text" name="textfield6" id="textfield6" value="{{ data.phone }}" readonly /></td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td><label for="textfield7"></label>
+      <input type="text" name="textfield7" id="textfield7" value="{{ data.email }}" readonly /></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

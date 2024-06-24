@@ -1,0 +1,30 @@
+{% extends 'user/user_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="" method="get">
+  <table class="table table-active">
+    <tr style="color: #414f52" bgcolor="#f0ffff">
+      <th scope="col">S/No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Photo</th>
+      <th scope="col"></th>
+    </tr>
+      {% for i in data %}
+    <tr style="color: #414f52">
+      <td>{{ forloop.counter }}</td>
+      <td>{{ i.name }}&nbsp;</td>
+      <td><img src="{{ i.image }}" alt="NO PHOTO" height="100" width="100"/>&nbsp;</td>
+    <td><a href="/delete_authorized_person/{{ i.id }}#products" onclick=" return confirm('Are you sure ?') " class="btn btn-outline-light">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

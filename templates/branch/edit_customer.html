@@ -1,0 +1,89 @@
+{% extends 'branch/branch_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="/edit_customer_post/{{ id }}" onsubmit="return validate()" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+
+  <table class="table table-active">
+    <tr>
+      <th scope="row" style="color: #414f52">Name</th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" required class="form-control"value="{{ data.name }}"/></td>
+    </tr>
+    <tr>
+      <th scope="row" style="color: #414f52">Email</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2"required class="form-control" value="{{ data.email }}" /></td>
+    </tr>
+    <tr>
+      <th scope="row" style="color: #414f52">Image</th>
+      <td>
+      <input type="file" name="fileField" id="fileField"required class="form-control" /></td>
+    </tr>
+    <tr>
+      <th scope="row" style="color: #414f52">Phone</th>
+      <td><label for="textfield3"></label>
+      <input type="text" name="textfield3" id="textfield3"required class="form-control" value="{{ data.phone }}"/></td>
+    </tr>
+    <tr>
+      <th scope="row" style="color: #414f52">Gender</th>
+      <td><input type="radio" name="radio" id="radio" value="Male" {% if data.gender == "Male" %} checked {% endif %}/>Male<br />
+        <input type="radio" name="radio" id="radio2" value="Female" {% if data.gender == "Female" %}checked {% endif %} />Female<br />
+      <input type="radio" name="radio" id="radio3" value="Other" {% if data.gender == "Other" %} checked {% endif %}/>Others</td>
+    </tr>
+    <tr>
+      <th scope="row" style="color: #414f52">Account No</th>
+      <td><label for="textfield4"></label>
+      <input type="text" name="textfield4" id="textfield4"required class="form-control" value="{{ data.account_no }}"/></td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2" scope="row"><input type="submit" name="button" id="button" class="btn btn-ensurance" value="Update" /></td>
+    </tr>
+  </table>
+</form>
+<script>
+    function validate() {
+        var regex = /^[a-zA-Z]*$/;
+        var regex1 = /^[0-9]*$/;
+        var regex2 =  /(.+)@(.+){2,}\.(.+){2,}/;
+        var regex3 =  /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
+
+
+        var cname = document.getElementById("textfield").value;
+        var cemail = document.getElementById("textfield2").value;
+        var cphone = document.getElementById("textfield3").value;
+        var caccount = document.getElementById("textfield4").value;
+
+
+        if (!regex.test(cname)) {
+            alert("Customer name should only contain alphabets");
+            return false;
+        }
+        else if (!regex2.test(cemail)) {
+            alert("Invalid Email");
+            return false;
+        }
+        else if (!regex3.test(cphone)) {
+            alert("Phone number should only contain digits");
+            return false;
+        }
+        else if (!regex1.test(caccount)) {
+            alert("Account number should only contain digits");
+            return false;
+        }
+        else {
+
+            return true;
+        }
+    }
+</script>
+</body>
+</html>
+{% endblock %}

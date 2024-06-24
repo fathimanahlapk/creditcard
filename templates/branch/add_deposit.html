@@ -1,0 +1,40 @@
+{% extends 'branch/branch_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="/branch_add_deposit_post/{{ id }}" onsubmit="return validate()" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  <table class="table table-active">
+    <tr>
+      <th scope="row" style="color: #414f52">Amount</th>
+      <td>
+      <input type="text" name="textfield" id="textfield" /></td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row"><input type="submit" name="button" class="btn btn-ensurance" id="button" value="Add" /></th>
+    </tr>
+  </table>
+</form>
+<script>
+    function validate() {
+    var regex1 = /^[0-9]*$/;
+
+    var bamount=document.getElementById("textfield").value;
+
+
+    if (!regex1.test(bamount)) {
+        alert("Enter valid amount");
+        return false;
+    }
+
+        return true;
+    }
+</script>
+</body>
+</html>
+{% endblock %}

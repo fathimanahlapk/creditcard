@@ -1,0 +1,41 @@
+{% extends 'branch/branch_index.html' %}
+{% block body %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="" method="get">
+  <table class="table table-active">
+    <tr style="color: #414f52" bgcolor="#f0ffff">
+      <th width="17" scope="col">S/No</th>
+      <th width="85" scope="col">Customer Number</th>
+      <th width="64" scope="col">Gender</th>
+      <th width="52" scope="col">Image</th>
+      <th width="74" scope="col">Account Number</th>
+      <th width="67" scope="col">Contact</th>
+      <th width="48" scope="col">Email</th>
+      <th width="66"scope="col"></th>
+      <th width="66"scope="col"></th>
+    </tr>
+      {% for i in data %}
+    <tr style="color: #414f52">
+      <td>{{ forloop.counter }}&nbsp;</td>
+      <td>{{ i.name }}&nbsp;</td>
+      <td>{{ i.gender }}&nbsp;</td>
+      <td><img src="{{ i.image }}" alt="NO PHOTO" height="100" width="100"/></td>
+      <td>{{ i.account_no }}</td>
+      <td>{{ i.phone }}&nbsp;</td>
+      <td>&nbsp;{{ i.email }}</td>
+    <td><p><a href="/edit_customer/{{ i.id }}#products" class="btn btn-outline-light" >Edit</a></p>
+      <p><a href="/delete_customer/{{ i.LOGIN_id }}#products" onclick=" return confirm('Are you sure ?') " class="btn btn-outline-light" >Delete</a></p></td>
+    <td><p><a href="/branch_add_deposit/{{ i.id }}#products" class="btn btn-outline-light" >Add Deposit</a></p>
+      <p><a href="/branch_view_transactions/{{ i.id }}#products" class="btn btn-outline-light" >View Transactions</a></p></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

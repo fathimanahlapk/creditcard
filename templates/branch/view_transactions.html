@@ -1,0 +1,31 @@
+{% extends 'branch/branch_index.html' %}
+{% block body %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body><form action="" method="get">
+  <table class="table table-active">
+    <tr style="color: #414f52" bgcolor="#f0ffff">
+      <th width="17" scope="col">S/No</th>
+      <th width="85" scope="col">Date</th>
+      <th width="64" scope="col">Time</th>
+      <th width="52" scope="col">Amount</th>
+      <th width="74" scope="col">Type</th>
+    </tr>
+      {% for i in data %}
+    <tr style="color: #414f52" {% if i.type == "Withdraw" %} class="alert-danger" {% else %} class="alert-success" {% endif %}>
+      <td>{{ forloop.counter }}&nbsp;</td>
+      <td>{{ i.date }}&nbsp;</td>
+      <td>{{ i.time }}&nbsp;</td>
+      <td><h3>{% if i.type == "Withdraw" %} - {% else %} + {% endif %}{{ i.amount }}</h3></td>
+      <td>{{ i.type }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
